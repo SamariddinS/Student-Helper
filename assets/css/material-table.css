@@ -1,0 +1,175 @@
+:root {
+    --app-container: #f3f6fd;
+    --main-color: #1f1c2e;
+    --secondary-color: #4a4a4a;
+    --link-color: #1f1c2e;
+    --link-color-hover: #c3cff4;
+    --link-color-active: #fff;
+    --link-color-active-bg: #1f1c2e;
+    --projects-section: #fff;
+    --message-box-hover: #fafcff;
+    --message-box-border: #e9ebf0;
+    --more-list-bg: #fff;
+    --more-list-bg-hover: #f6fbff;
+    --more-list-shadow: rgba(209, 209, 209, 0.4);
+    --button-bg: #1f1c24;
+    --search-area-bg: #fff;
+    --star: #1ff1c2e;
+    --message-btn: #fff;
+  }
+  
+  .dark:root {
+    --app-container: #1f1d2b;
+    --app-container: #111827;
+    --main-color: #fff;
+    --secondary-color: rgba(255, 255, 255, 0.8);
+    --projects-section: #1f2937;
+    --link-color: rgba(255, 255, 255, 0.8);
+    --link-color-hover: rgba(195, 207, 244, 0.1);
+    --link-color-active-bg: rgba(195, 207, 244, 0.2);
+    --button-bg: #1f2937;
+    --search-area-bg: #1f2937;
+    --message-box-hover: #243244;
+    --message-box-border: rgba(255, 255, 255, 0.1);
+    --star: #ffd92c;
+    --light-font: rgba(255, 255, 255, 0.8);
+    --more-list-bg: #2f3142;
+    --more-list-bg-hover: rgba(195, 207, 244, 0.1);
+    --more-list-shadow: rgba(195, 207, 244, 0.1);
+    --message-btn: rgba(195, 207, 244, 0.1);
+  }
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+
+}
+.large-screen .table-wrapper {
+  max-width: 800px;
+}
+.large-screen .card-list-table {
+  background: white;
+}
+.large-screen .card-list-table tbody tr {
+  background: transparent;
+  box-shadow: none;
+  margin: 0;
+}
+.large-screen .card-list-table tbody tr:nth-of-type(even) {
+  background: #dfdfdf;
+}
+.large-screen .card-list-table thead {
+  display: table-header-group;
+}
+.large-screen .card-list-table thead th:last-child {
+  box-shadow: none;
+}
+.large-screen .card-list-table thead th {
+  border-bottom: 1px solid #dfdfdf;
+  padding: 12px 24px;
+}
+.large-screen .card-list-table tbody tr {
+  display: table-row;
+  padding-bottom: 0;
+}
+.large-screen .card-list-table tbody tr:nth-of-type(even) {
+  background: #fff;
+}
+.large-screen .card-list-table tbody td {
+  border-bottom: 1px solid #dfdfdf;
+  cursor: pointer;
+  display: table-cell;
+  padding: 20px 24px;
+  transition: background 0.2s ease-out;
+  vertical-align: middle;
+}
+.large-screen .card-list-table tbody td:after {
+  display: none;
+}
+.large-screen .card-list-table tbody td:before {
+  content: "";
+}
+.large-screen .card-list-table tbody tr:hover td {
+  background: #fcf3d0;
+}
+
+.table-wrapper {
+  max-width: 400px;
+  width: 95%;
+  margin: 0 auto 0;
+  max-height: 500px;
+  overflow-y: scroll;
+  position: relative;
+  transition: all 0.2s ease-out;
+}
+@media (min-width: 768px) {
+  .table-wrapper {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.card-list-table {
+  table-layout: fixed;
+  background: transparent;
+  margin-bottom: 0;
+  width: 100%;
+}
+.card-list-table thead {
+  display: none;
+}
+.card-list-table tbody tr {
+  background-color: var(--projects-section);
+  border-bottom: 1px solid #dfdfdf;
+  cursor: pointer;
+  display: block;
+  padding: 15px 10px;
+  margin: 0 0 10px 0;
+}
+.card-list-table tbody td {
+  border: 0;
+  display: block;
+  padding: 10px 10px 20px 40%;
+  position: relative;
+  color: var(--main-color);
+}
+.card-list-table tbody td:first-of-type::after {
+  visibility: hidden;
+}
+.card-list-table tbody td:after {
+  content: "";
+  width: calc(100% - 30px);
+  display: block;
+  margin: 0 auto;
+  height: 1px;
+  background: #dfdfdf;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+}
+.card-list-table tbody td:before {
+  text-transform: uppercase;
+  font-size: 0.85em;
+  content: attr(data-title);
+  display: table-cell;
+  font-weight: 500;
+  height: 100%;
+  left: 15px;
+  margin: auto;
+  position: absolute;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 40%;
+  line-height: 20px;
+  color: var(--secondary-color);
+  opacity: 0.7;
+}
+.card-list-table thead th {
+  text-transform: uppercase;
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.5pt;
+}
