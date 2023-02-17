@@ -1,13 +1,17 @@
+import { IsEmail, IsString } from 'class-validator';
+
 export namespace AccountLogin {
-	export const topic = 'account.login.command';
+    export const topic = 'account.login.command';
 
-	export class Request {
-		email: string;
-		password: string;
-	}
+    export class Request {
+        @IsEmail()
+        email: string;
 
-	export class Response {
-		access_token: string;
-	}
+        @IsString()
+        password: string;
+    }
+
+    export class Response {
+        access_token: string;
+    }
 }
-
