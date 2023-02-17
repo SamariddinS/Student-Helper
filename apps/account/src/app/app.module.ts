@@ -1,23 +1,22 @@
-import { ConfigModule, ConfigService } from '@nestjs/config/dist';
-import { MongooseModuleAsyncOptions } from '@nestjs/mongoose';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { RMQModule } from 'nestjs-rmq';
+import { AuthModule } from './auth/auth.module';
+import { getMongoConfig } from './configs/mongo.config';
+import { getRMQConfig } from './configs/rmq.config';
+import { UserModule } from './user/user.module';
 
-export const getMongoConfig = (): MongooseModuleAsyncOptions => {
-    return {
-        useFactory: (configService: ConfigService) => ({
-            uri: getMongoString(configService),
+@Module({
+    imports: [
+        ConfigModule.forRoot({
+            isGlobal: true,
+            envFilePath: 'envs/.account.env',
         }),
-        inject: [ConfigService],
-        imports: [ConfigModule],
-    };
-};
-
-const getMongoString = (configService: ConfigService) =>
-    'mongodb+srv://' +
-    configService.get('MONGO_USER') +
-    ':' +
-    configService.get('MONGO_PASSWORD') +
-    '@' +
-    configService.get('MONGO_HOST') +
-    '/' +
-    configService.get('MONGO_DATABASE') +
-    '?retryWrites=true&w=majority';
+        RMQModule.forRootAsync(getRMQConfig()),
+        UserModule,
+        AuthModule,
+        MongooseModule.forRootAsync(getMongoConfig()),
+    ],
+})
+export class AppModule {}
