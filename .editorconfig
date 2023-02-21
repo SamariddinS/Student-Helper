@@ -1,13 +1,34 @@
-# Editor configuration, see http://editorconfig.org
+# This is the top-most .editorconfig file (do not search in parent directories)
 root = true
 
+### All files
 [*]
+# Force charset utf-8
 charset = utf-8
-indent_style = tabs
+# Indentation
+indent_style = tab
 indent_size = 4
+# line breaks and whitespace
 insert_final_newline = true
 trim_trailing_whitespace = true
+# end_of_line = lf
+max_line_length = on
 
+### Frontend files
+[*.{css,scss,less,js,json,ts,sass,php,html,hbs,mustache,phtml,html.twig}]
+
+### Markdown
 [*.md]
-max_line_length = off
+indent_style = space
+indent_size = 4
 trim_trailing_whitespace = false
+
+### YAML
+[*.yml]
+indent_style = space
+indent_size = 2
+
+### Specific files
+[{package,bower}.json]
+indent_style = space
+indent_size = 2
