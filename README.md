@@ -10,10 +10,6 @@ Run `nx serve account` for a dev server. Navigate to http://localhost:4200/. The
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
-## Remote caching
-
-Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
-
 ## Further help
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+Visit the [Student-Helper Documentation](https://github.com/Student-Helper1/Documentation) to learn more.
