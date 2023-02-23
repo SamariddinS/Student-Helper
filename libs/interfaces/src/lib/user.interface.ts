@@ -3,11 +3,11 @@ export enum UserRole {
 	Student = 'Student',
 }
 
-export enum PurchaseState {
+export enum UserPurchaseState {
 	Started = 'Started',
 	WaitingForPayment = 'WaitingForPayment',
 	Purchased = 'Purchased',
-	Cenceled = 'Cenceled',
+	Canceled = 'Canceled',
 }
 
 export interface IUser {
@@ -22,5 +22,5 @@ export interface IUser {
 export interface IUserCourses {
 	_id?: string;
 	courseId: string;
-	purchaseState: PurchaseState;
+	purchaseState: UserPurchaseState;
 }
