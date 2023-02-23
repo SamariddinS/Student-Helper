@@ -8,15 +8,15 @@ import { getRMQConfig } from './configs/rmq.config';
 import { UserModule } from './user/user.module';
 
 @Module({
-    imports: [
-        ConfigModule.forRoot({
-            isGlobal: true,
-            envFilePath: 'envs/.account.env',
-        }),
-        RMQModule.forRootAsync(getRMQConfig()),
-        UserModule,
-        AuthModule,
-        MongooseModule.forRootAsync(getMongoConfig()),
-    ],
+	imports: [
+		ConfigModule.forRoot({
+			isGlobal: true,
+			envFilePath: 'envs/.account.env',
+		}),
+		RMQModule.forRootAsync(getRMQConfig()),
+		UserModule,
+		AuthModule,
+		MongooseModule.forRootAsync(getMongoConfig()),
+	],
 })
-export class AppModule {}
+export class AppModule { }
