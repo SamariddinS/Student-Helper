@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {
 	IUser,
 	IUserCourses,
-	PurchaseState,
+	UserPurchaseState,
 	UserRole,
 } from '@student-helper/interfaces';
 import { Document, Types } from 'mongoose';
@@ -12,8 +12,8 @@ export class UserCourses extends Document implements IUserCourses {
 	@Prop({ required: true })
 	courseId: string;
 
-	@Prop({ required: true, enum: PurchaseState, type: String })
-	purchaseState: PurchaseState;
+	@Prop({ required: true, enum: UserPurchaseState, type: String })
+	purchaseState: UserPurchaseState;
 }
 
 export const UserCoursesSchema = SchemaFactory.createForClass(UserCourses);
