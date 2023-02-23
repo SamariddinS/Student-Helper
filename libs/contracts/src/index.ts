@@ -1,4 +1,6 @@
+export * from './lib/account/account.buy-course';
 export * from './lib/account/account.change-profile';
+export * from './lib/account/account.check-payment';
 export * from './lib/account/account.login';
 export * from './lib/account/account.register';
 export * from './lib/account/account.user-courses';
