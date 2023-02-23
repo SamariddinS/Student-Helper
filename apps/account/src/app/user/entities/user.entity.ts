@@ -1,4 +1,4 @@
-import { IUser, IUserCourses, UserRole } from '@student-helper/interfaces';
+import { IUser, IUserCourses, UserPurchaseState, UserRole } from '@student-helper/interfaces';
 import { compare, genSalt, hash } from 'bcryptjs';
 
 export class UserEntity implements IUser {
@@ -18,12 +18,38 @@ export class UserEntity implements IUser {
 		this.courses = user.courses;
 	}
 
+	public setCourseStatus(courseId: string, state: UserPurchaseState) {
+		const exist = this.courses.find(c => c._id === courseId);
+
+		if (!exist) {
+			this.courses.push({
+				courseId,
+				purchaseState: state
+			})
+			return this;
+		}
+
+		if (state === UserPurchaseState.Canceled) {
+			this.courses = this.courses.filter(c => c._id !== courseId);
+			return this;
+		}
+
+		this.courses = this.courses.map(c => {
+			if (c._id === courseId) {
+				c.purchaseState = state;
+				return c;
+			}
+			return c;
+		})
+		return this;
+	}
+
 	public getPublicProfile() {
 		return {
 			email: this.email,
 			role: this.role,
-			displayName: this.displayName,
-		};
+			displayName: this.displayName
+		}
 	}
 
 	public async setPassword(password: string) {
