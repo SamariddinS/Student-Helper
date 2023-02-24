@@ -9,9 +9,7 @@ export class AuthController {
 
 	@RMQValidate()
 	@RMQRoute(AccountRegister.topic)
-	async register(
-		@Body() dto: AccountRegister.Request
-	): Promise<AccountRegister.Response> {
+	async register(@Body() dto: AccountRegister.Request): Promise<AccountRegister.Response> {
 		return this.authService.register(dto);
 	}
 
