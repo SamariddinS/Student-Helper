@@ -10,7 +10,7 @@ import { UserRepository } from './../user/repositories/user.repository';
 import { AuthModule } from './auth.module';
 
 const authLogin: AccountLogin.Request = {
-	email: 's@s.ru',
+	email: 's@s.uz',
 	password: '1'
 }
 
