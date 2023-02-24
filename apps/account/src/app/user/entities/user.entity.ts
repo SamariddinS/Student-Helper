@@ -50,6 +50,10 @@ export class UserEntity implements IUser {
 		return this;
 	}
 
+	public getCourseState(courseId: string): UserPurchaseState {
+		return this.courses.find(c => c.courseId === courseId)?.purchaseState ?? UserPurchaseState.Started;
+	}
+
 	public getPublicProfile() {
 		return {
 			email: this.email,
