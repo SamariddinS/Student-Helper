@@ -1,7 +1,6 @@
 import { AccountChangedCourse } from '@student-helper/contracts';
-import { IUser, IUserCourses, UserPurchaseState, UserRole } from '@student-helper/interfaces';
+import { IDomainEvent, IUser, IUserCourses, UserPurchaseState, UserRole } from '@student-helper/interfaces';
 import { compare, genSalt, hash } from 'bcryptjs';
-import { IDomainEvent } from './../../../../../../libs/interfaces/src/lib/events.interface';
 
 export class UserEntity implements IUser {
 	_id?: string;
@@ -22,7 +21,7 @@ export class UserEntity implements IUser {
 	}
 
 	public setCourseStatus(courseId: string, state: UserPurchaseState) {
-		const exist = this.courses.find(c => c._id === courseId);
+		const exist = this.courses.find(c => c.courseId === courseId);
 
 		if (!exist) {
 			this.courses.push({
@@ -33,12 +32,12 @@ export class UserEntity implements IUser {
 		}
 
 		if (state === UserPurchaseState.Canceled) {
-			this.courses = this.courses.filter(c => c._id !== courseId);
+			this.courses = this.courses.filter(c => c.courseId !== courseId);
 			return this;
 		}
 
 		this.courses = this.courses.map(c => {
-			if (c._id === courseId) {
+			if (c.courseId === courseId) {
 				c.purchaseState = state;
 				return c;
 			}
