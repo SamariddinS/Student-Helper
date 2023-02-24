@@ -8,4 +8,4 @@ export * from './lib/account/account.user-info';
 export * from './lib/course/course.get-course';
 export * from './lib/payment/payment.check';
 export * from './lib/payment/payment.generate-link';
-
+export * from './lib/account/account.changed-course';
